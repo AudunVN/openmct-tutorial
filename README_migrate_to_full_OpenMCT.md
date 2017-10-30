@@ -2,9 +2,9 @@
 
 Follow these steps to setup this CT/Open MCT integration in a full Open MCT version (ie, not just the tutorial version).  It is assumed the full Open MCT is stored in a folder called openmct.
 
-1. Copy folder example-server to openmct
+1. Copy content of folder example-server to openmct/example-server
 
-2. Copy folder lib to openmct
+2. Copy content of folder lib to openmct/lib
 
 3. Backup openmct/index.html to openmct/index_ORIG.html
 
