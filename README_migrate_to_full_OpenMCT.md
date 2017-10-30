@@ -9,12 +9,12 @@ Follow these steps to setup this CT/Open MCT integration in a full Open MCT vers
 3. Backup openmct/index.html to openmct/index_ORIG.html
 
 4. Copy the following 6 files to openmct:
-...ct-dictionary-plugin.js
-...dictionary.json
-...dictionary-plugin.js
-...historical-telemetry-plugin.js
-...index.html
-...realtime-telemetry-plugin.js
+  * ct-dictionary-plugin.js
+  * dictionary.json
+  * dictionary-plugin.js
+  * historical-telemetry-plugin.js
+  * index.html
+  * realtime-telemetry-plugin.js
 
 5. Edit the new openmct/index.html file; change instances of `node_modules/openmct/dist` to `dist`
 
