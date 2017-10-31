@@ -1,6 +1,6 @@
 # Installation instructions
 
-This repository contains a forked version of NASA's Open MCT tutorial (https://github.com/nasa/openmct-tutorial) which has been modified to provide an interface to CloudTurbine data.  CT data being served by the CTweb interface can be viewed in this Open MCT package.
+This repository contains a forked version of NASA's Open MCT tutorial (https://github.com/nasa/openmct-tutorial) which has been modified to provide an interface to CloudTurbine (CT) data.  CT data being served by the CTweb server can be viewed in Open MCT by using this package.
 
 Setup:
 
@@ -20,23 +20,25 @@ cd <openmct-tutorial-install-folder>
 npm install xmldom
 ```
 
-5. Start your local CT sources, such as CTstream or CTmousetrack.  See http://www.cloudturbine.com/ for installation and operation information.
+5. Start one or more local CT sources, such as CTstream or CTmousetrack.  See http://www.cloudturbine.com/ for installation and operation information.
 
-6. Start CTweb on your local computer to serve your CT data.  This server provides a RESTful interface used by the CT/Open MCT interface to fetch CT data for viewing in Open MCT
+6. Start CTweb on your local computer to serve your CT data.  This server provides a RESTful interface used by the CT/Open MCT interface to fetch CT data for viewing in Open MCT.
 
-7. Start openmct-tutorial:
+7. Start the CT/Open MCT interface:
 ```
 cd <openmct-tutorial-install-folder>
 npm start
 ```
 
+8. View data in a browser by going to http://localhost:8080
+
 Here's an example of viewing CT data from a cable test at Erigo Technologies using Open MCT.
 
 ![](images/CBOS_data_in_OpenMCT.png)
 
-# Install the CT/Open MCT integration in a full openmct distribution
+# Install the CT/Open MCT interface in a full openmct distribution
 
-Follow these steps to setup this CT/Open MCT integration in a full Open MCT version (ie, not just the tutorial version).  In the instructions below, it is assumed that you have already installed the CT/Open MCT interface per the instructions above and that you have installed the full version of Open MCT in a folder called openmct.
+Follow these steps to install the CT/Open MCT interface in a full Open MCT version (ie, not just the tutorial version).  In the instructions below, it is assumed that you have already installed the CT/Open MCT interface (per the instructions above) and that you have installed the full version of Open MCT in a folder called ```openmct```.
 
 1. Copy content of folder example-server to openmct/example-server
 
@@ -65,3 +67,5 @@ Follow these steps to setup this CT/Open MCT integration in a full Open MCT vers
 cd openmct
 npm install xmldom
 ```
+
+At this point, you should be able to start some CT sources, start CTweb, start openmct (```npm start```) and view data in a browser.
