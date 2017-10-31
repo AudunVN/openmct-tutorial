@@ -1,5 +1,9 @@
 /*
  Spacecraft.js simulates a small spacecraft generating telemetry.
+ 
+ This version has been modified from the original from openmct-tutorial,
+ just to add code documentation comments.
+ 
 */
 
 function Spacecraft() {
@@ -18,6 +22,7 @@ function Spacecraft() {
         this.history[k] = [];
     }, this);
 
+    // call these functions at 1Hz (period = 1000 msec)
     setInterval(function () {
         this.updateState();
         this.generateTelemetry();
@@ -35,7 +40,12 @@ function Spacecraft() {
     }.bind(this));
 };
 
+/**
+ * This function is called periodically (1Hz) to update data on all channels.
+ * See "setInterval" up above for where this is configured.
+ */
 Spacecraft.prototype.updateState = function () {
+	// console.log('spacecraft.js: updateState(): update channel data');
     this.state["prop.fuel"] = Math.max(
         0,
         this.state["prop.fuel"] -
@@ -58,9 +68,10 @@ Spacecraft.prototype.updateState = function () {
 Spacecraft.prototype.generateTelemetry = function () {
     var timestamp = Date.now(), sent = 0;
     Object.keys(this.state).forEach(function (id) {
+    	// console.log('spacecraft.js: generateTelemetry(): push data to listener ' + id);
         var state = { timestamp: timestamp, value: this.state[id], id: id};
-        this.notify(state);
-        this.history[id].push(state);
+        this.notify(state);  // this tickles notifySubscribers() in realtime-server.js, which in turn pushes the data point to subscribers
+        this.history[id].push(state);  // save data in historical buffer
         this.state["comms.sent"] += JSON.stringify(state).length;
     }, this);
 };

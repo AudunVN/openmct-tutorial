@@ -1,27 +1,85 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<!--
+    This is a modified version of index.html from openmct-tutorial.  An
+    historical plugin and a realtime plugin are started for each of two
+    telemetry streams: the sample Spacecraft stream and the CloudTurbine stream.
+    We also added a local time system and a time conductor.
+    
+    When using this file in a full openmct installation, you must replace the
+    two instances of "node_modules/openmct/dist" found below with "dist"; this
+    is becasue in an openmct-tutorial installation, the openmct.js file is
+    located in <openmct-tutorial-root>/node_modules/openmct/dist whereas in a
+    full openmct installation this file is located in <openmct-root>/dist.
+-->
 <head>
-    <title>Open MCT Tutorials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
     <script src="node_modules/openmct/dist/openmct.js"></script>
     <script src="lib/http.js"></script>
+    <script src="ct-dictionary-plugin.js"></script>
     <script src="dictionary-plugin.js"></script>
     <script src="historical-telemetry-plugin.js"></script>
     <script src="realtime-telemetry-plugin.js"></script>
 </head>
 <body>
     <script>
+        var ONE_YEAR = 365 * 24 * 60 * 60 * 1000;
+        var ONE_MINUTE = 60 * 1000;
         openmct.setAssetPath('node_modules/openmct/dist');
-        openmct.install(openmct.plugins.LocalStorage());
         openmct.install(openmct.plugins.MyItems());
-        openmct.install(openmct.plugins.UTCTimeSystem());
-        openmct.time.clock('local', {start: -15 * 60 * 1000, end: 0});
-        openmct.time.timeSystem('utc');
+        openmct.install(openmct.plugins.LocalStorage());
         openmct.install(openmct.plugins.Espresso());
-
+        openmct.install(openmct.plugins.Generator());
+        openmct.install(openmct.plugins.ExampleImagery());
+        openmct.install(openmct.plugins.UTCTimeSystem());
+        openmct.install(openmct.plugins.ImportExport());
         openmct.install(DictionaryPlugin());
-        openmct.install(HistoricalTelemetryPlugin());
-        openmct.install(RealtimeTelemetryPlugin());
-
+        openmct.install(HistoricalTelemetryPlugin('example.telemetry',8081));
+        openmct.install(RealtimeTelemetryPlugin('example.telemetry',8082));
+        openmct.install(CTDictionaryPlugin());
+        openmct.install(HistoricalTelemetryPlugin('ct.telemetry',8091));
+        openmct.install(RealtimeTelemetryPlugin('ct.telemetry',8092));
+        // JPW Define a local time system - needed for the "timeSystem: 'local'" in the Tine Conductor configuration below.
+        openmct.time.addTimeSystem({
+            key: 'local',
+            name: 'UTC Time',
+            cssClass: 'icon-clock',
+            timeFormat: 'utc',
+            durationFormat: 'duration',
+            isUTCBased: true
+        });
+        // JPW Add a Time Conductor, which adds a timeline to a plot window;
+        // see https://github.com/nasa/openmct/blob/master/API.md#the-time-conductor for details
+        openmct.install(openmct.plugins.Conductor({
+            menuOptions: [
+                // 'Fixed' bounds mode configuation for the UTCTimeSystem
+                {
+                    timeSystem: 'utc',
+                    bounds: {start: Date.now() - 30 * ONE_MINUTE, end: Date.now()},
+                    zoomOutLimit: ONE_YEAR,
+                    zoomInLimit: ONE_MINUTE
+                },
+                // Configuration for the LocalClock in the UTC time system
+                {
+                    clock: 'local',
+                    timeSystem: 'utc',
+                    clockOffsets: {start: -30 * ONE_MINUTE, end: 0},
+                    zoomOutLimit: ONE_YEAR,
+                    zoomInLimit: ONE_MINUTE
+                },
+                //Configuration for the LocaLClock in the Local time system
+                {
+                    clock: 'local',
+                    timeSystem: 'local',
+                    clockOffsets: {start: -15 * ONE_MINUTE, end: 0}
+                }
+            ]
+        }));
+        // JPW The following is used when making a history server request;
+        // get the latest 1 min of data when a plot is initialized
+        openmct.time.clock('local', {start: -1 * 60 * 1000, end: 0});
         openmct.start();
     </script>
 </body>
