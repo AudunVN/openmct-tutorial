@@ -29,3 +29,7 @@ Follow these steps to setup this CT/Open MCT integration in a full Open MCT vers
 cd openmct
 npm install xmldom
 ```
+
+Here's an example of viewing CT data from a cable test at Erigo Technologies using Open MCT.
+
+![](images/CBOS_data_in_OpenMCT.png)
