@@ -1,3 +1,9 @@
+# CT/Open MCT interface
+
+This repository is a fork of the NASA Open MCT tutorial repository (https://github.com/nasa/openmct-tutorial). Some files have been added/modified to provide an interface for viewing CloudTurbine data. Using this interface, CloudTurbine data served by the CTweb server can be viewed in Open MCT.
+
+For installation and usage details, see [README_CloudTurbine_instructions.md](./README_CloudTurbine_instructions.md).
+
 # Open MCT Integration Tutorials
 
 These tutorials will walk you through the simple process of integrating your telemetry systems with Open MCT.  In case you don't have any telemetry systems, we've included a reference implementation of a historical and realtime server.  We'll take you through the process of integrating those services with Open MCT.
