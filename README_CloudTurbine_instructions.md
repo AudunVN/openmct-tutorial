@@ -59,7 +59,7 @@ Follow these steps to install the CT/Open MCT interface in a full Open MCT versi
 6. Copy openmct/package.json to openmct/package_ORIG.json
 
 7. Edit openmct/package.json:
-  * add the following in the `scripts` section: `"start": "node example-server/server.js"`
+  * in the `scripts` section, change the `"start"` line to the following: `"start": "node example-server/server.js"`
   * add the following in the `dependencies` section: `"ws": "^2.0.3"`
 
 8. Install xmldom package:

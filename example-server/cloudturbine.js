@@ -20,7 +20,8 @@ limitations under the License.
  * fetched from CTweb server.
  *
  * This is based on NASA's Spacecraft telemetry generator found in spacecraft.js
- * from the openmct-tutorial example.
+ * from the openmct-tutorial example.  This version has been modified to fetch
+ * CT data from the CTweb RESTful service.
  *
  * NOTE:
  * CT channel names typically include a parentfolder/channelname format, separated by '/'.  Since '/' can't be used
