@@ -1,10 +1,10 @@
 # Installation instructions
 
-This repository contains a forked version of NASA's Open MCT tutorial (https://github.com/nasa/openmct-tutorial) which has been modified to provide an interface to CloudTurbine (CT) data.  Using this interface, CT data served by the CTweb server (a RESTful service) can be viewed in Open MCT.
+This repository contains a forked version of NASA's Open MCT tutorial (https://github.com/nasa/openmct-tutorial) which has been modified to provide an interface to CloudTurbine (CT) data.  Using this interface, CT data served by the CTweb server can be viewed in Open MCT.
 
 Setup:
 
-1. Make sure you have node.js and Git installed on your computer.
+1. Make sure you have node.js and Git installed on your computer
 
 2. Clone this repository to your local machine
 
@@ -68,6 +68,6 @@ cd openmct
 npm install xmldom
 ```
 
-9. Start one or more CT sources and CTweb
+9. Start one or more CT sources and the CTweb server
 
-10. Start openmct (`npm start`) and view CT data in Open MCT by going to http://localhost:8080.
+10. Start openmct (`npm start`) and view CT data in Open MCT by going to http://localhost:8080
