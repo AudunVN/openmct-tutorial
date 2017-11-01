@@ -38,7 +38,7 @@ Here's an example of viewing CT data from a cable test at Erigo Technologies usi
 
 # Install the CT/Open MCT interface in a full openmct distribution
 
-Follow these steps to install the CT/Open MCT interface in a full Open MCT version (ie, not just the tutorial version).  In the instructions below, it is assumed that you have already installed the CT/Open MCT interface (per the instructions above) and that you have installed the full version of Open MCT in a folder called ```openmct```.
+The following instructions describe how to add the CT/Open MCT interface to a full version of Open MCT (available from https://github.com/nasa/openmct).  It is assumed that you have already installed the CT/Open MCT interface using the instructions above and that you have installed the full version of Open MCT in a folder called `openmct`.
 
 1. Copy content of folder example-server to openmct/example-server
 
