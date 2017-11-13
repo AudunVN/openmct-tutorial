@@ -2,6 +2,8 @@
 
 This repository contains a forked version of NASA's Open MCT tutorial (https://github.com/nasa/openmct-tutorial) which has been modified to provide an interface to CloudTurbine (CT) data.  Using this interface, CT data served by the CTweb server can be viewed in Open MCT.
 
+A white paper describing the CloudTurbine/Open MCT interface is available at http://www.cloudturbine.com/ct-and-openmct-doc/.
+
 Setup:
 
 1. Make sure you have node.js and Git installed on your computer
